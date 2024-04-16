@@ -1,0 +1,72 @@
+"""
+    Make a code that can estimate a simple comparison for kg and lbs equation
+    Jiovanny
+    4/3/24
+"""
+
+def invert_kg(lbs:float) -> float:
+    #annotate var
+    kg:float
+    lbs:float
+
+    #calculate kg
+    kg = lbs / 2.2
+    return kg
+
+
+def invert_lbs(kg:float) -> float:
+    #annotate var
+    lbs:float
+    kg:float
+
+    #calculate lbs
+    lbs = kg * 2.2
+    return lbs
+
+
+def check(yn:str) ->bool:
+    yn_up = yn.upper()
+    if yn_up == "YES":
+        yn = True
+    elif yn_up == "NO":
+        print("Have a nice day then")
+    else:
+        print("I don't understand what you were asking, can you repeat that?")
+        main()
+    return(yn)
+
+
+def ask() -> str:
+    value = input("What would you like to, kg or lbs: ")
+    while value.upper() != "KG" and value.upper() != "LBS":
+        print("I don't know that one")
+        value = input("What would you like to, kg or lbs: ")
+        
+
+        
+    return value
+           
+
+def main():
+    #annotate var
+    con: bool
+    value: str
+    
+    #ask user if they would like to continue
+    con = input("Would you like to convert any pounds or kilograms? yes/no: ")
+
+    #Find out if the user wants to continue
+    if check(con) == True:
+
+        value = ask().upper()
+
+        #Send user to the right convert
+        if value == "KG":
+            kg = float(input("How much lbs would you like to convert to kg: "))
+            print("{:.2f}".format(invert_kg(kg)))
+        elif value == "LBS":
+            lbs = float(input("How much kg would you like to convert to lbs: "))
+            print("{:.2f}".format(invert_lbs(lbs))) 
+
+            
+main()
